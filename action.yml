@@ -23,7 +23,7 @@ runs:
   using: "composite"
   steps:
 
-    - run: sudo apt install openjdk-8-jre-headless
+    - run: sudo apt-get -y install openjdk-8-jre-headless
       shell: bash
 
     - run: echo "${{ inputs.keystore }}" | base64 -d > signing-key.jks
