@@ -1,6 +1,10 @@
 name: "Build Signed APK"
 description: "Build a signed APK of your Android application"
 
+branding:
+  icon: cpu
+  color: red
+
 inputs:
 
   keystore:
