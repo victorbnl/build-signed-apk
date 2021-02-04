@@ -1,5 +1,8 @@
 # Build signed APK
+
 Build a signed APK of your Android application
+
+**WARNING:** This uses `apt-get` to install Java, as I didn't find better ways to install it, and, consequently, will work ONLY on Ubuntu
 
 ## Inputs
 
