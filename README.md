@@ -1,7 +1,7 @@
 # build-signed-apk
 Build a signed APK of your Android application
 
-# Inputs
+## Inputs
 
 The following inputs are all required
 
@@ -10,7 +10,7 @@ The following inputs are all required
 - `key_alias`: the alias of the key
 - `key_password`: the password of the key
 
-# Example
+## Example
 
 ```yaml
 - name: Build Signed APK
@@ -22,6 +22,6 @@ The following inputs are all required
     key_password: ${{ secrets.key_password }}
 ```
 
-# Get your APK
+## Get your APK
 
 The APK is built at the default location, which is: `/app/build/outputs/apk/release/app-release.apk`. Feel free to do whatever you want with this apk now, like creating a release with it or putting it as an artifact of the release
