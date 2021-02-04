@@ -17,7 +17,7 @@ The following inputs are all required
 
 ```yaml
 - name: Build Signed APK
-  uses: Victor-Bo/build-signed-apk@vX
+  uses: victorbnl/build-signed-apk@main
   with:
     keystore: ${{ secrets.keystore }}
     keystore_password: ${{ secrets.keystore_password }}
