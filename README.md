@@ -27,4 +27,4 @@ The following inputs are all required
 
 ## Get your APK
 
-The APK is built at the default location, which is: `$GITHUB_WORKSPACE/app/build/outputs/apk/release/app-release.apk`. Feel free to do whatever you want with this apk now, like creating a release with it or putting it as an artifact of the release
+The APK is built at the default location, which is: `app/build/outputs/apk/release/app-release.apk`. Feel free to do whatever you want with this apk now, like creating a release with it or putting it as an artifact of the release
