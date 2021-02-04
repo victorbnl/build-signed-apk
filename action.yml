@@ -41,3 +41,6 @@ runs:
         -Pandroid.injected.signing.key.alias=${{ inputs.key_alias }} 
         -Pandroid.injected.signing.key.password=${{ inputs.key_password }}
       shell: bash
+
+    - run: rm $GITHUB_WORKSPACE/signing-key.jks
+      shell: bash
