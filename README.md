@@ -1,4 +1,4 @@
-# build-signed-apk
+# Build signed APK
 Build a signed APK of your Android application
 
 ## Inputs
