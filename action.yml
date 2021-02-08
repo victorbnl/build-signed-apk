@@ -36,10 +36,10 @@ runs:
     - run: chmod +x ./gradlew
       shell: bash
 
-    - run: ./gradlew build --no-daemon
+    - run: ./gradlew build
       shell: bash
 
-    - run: ./gradlew assembleRelease --no-daemon
+    - run: ./gradlew assembleRelease
         -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/signing-key.jks 
         -Pandroid.injected.signing.store.password=${{ inputs.keystore_password }} 
         -Pandroid.injected.signing.key.alias=${{ inputs.key_alias }} 
