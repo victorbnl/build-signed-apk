@@ -26,6 +26,12 @@ inputs:
 runs:
   using: "composite"
   steps:
+  
+    - run: sudo apt-get -y update
+      shell: bash
+      
+    - run: sudo apt-get -y upgrade
+      shell: bash
 
     - run: sudo apt-get -y install openjdk-11-jdk
       shell: bash
