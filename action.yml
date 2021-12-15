@@ -7,7 +7,7 @@ branding:
 
 inputs:
 
-  keystore:
+  keystore_b64:
     description: "The contents of the keystore file, encoded as base64"
     required: false
     
@@ -38,13 +38,13 @@ runs:
       shell: bash
       
     - shell: bash
-      run: echo "${{ inputs.keystore }}" | base64 -d > $GITHUB_WORKSPACE/signing-key.jks
-      if: inputs.keystore
+      run: echo "${{ inputs.keystore_b64 }}" | base64 -d > $GITHUB_WORKSPACE/signing-key.jks
+      if: inputs.keystore_b64
       
     - name: Copy the key file to the signing key file
       run: cp ${{ inputs.keystore_file }} $GITHUB_WORKSPACE/signing-key.jks
       shell: bash
-      if: inputs.keystore_file && !inputs.keystore
+      if: inputs.keystore_file && !inputs.keystore_b64
 
     - run: chmod +x ./gradlew
       shell: bash
