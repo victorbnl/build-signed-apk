@@ -8,10 +8,13 @@ Build a signed APK of your Android application
 
 The following inputs are all required
 
-- `keystore`: the keystore file (.jks) as base64. I highly recommand you to generate this with the linux `base64` command, it did not work for me using websites to convert it
+- `keystore_b64` (optional, in alternative to `keystore_file`): the _contents of_ the keystore file (.jks), encoded as base64. (_I highly recommend you to generate this with the linux `base64` command, it did not work for me using websites to convert it._)
+- `keystore_file` (optional, in alternative to `keystore`): the path to the keystore file (.jks). There's no need to encode it as base64.
 - `keystore_password`: the password of the file
 - `key_alias`: the alias of the key
 - `key_password`: the password of the key
+
+If both `keystore_b64` and `keystore_file` are defined, only `keystore_b64` will be used. At least one of them must be defined.
 
 ## Example
 

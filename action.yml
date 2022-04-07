@@ -7,9 +7,13 @@ branding:
 
 inputs:
 
-  keystore:
-    description: "Keystore file encoded as base64"
-    required: true
+  keystore_b64:
+    description: "The contents of the keystore file, encoded as base64"
+    required: false
+    
+  keystore_file:
+    description: "The path to the .jks keystore file"
+    required: false
     
   keystore_password:
     description: "Keystore file password"
@@ -32,9 +36,15 @@ runs:
 
     - run: sudo apt-get -y install openjdk-11-jdk
       shell: bash
-
-    - run: echo "${{ inputs.keystore }}" | base64 -d > $GITHUB_WORKSPACE/signing-key.jks
+      
+    - shell: bash
+      run: echo "${{ inputs.keystore_b64 }}" | base64 -d > $GITHUB_WORKSPACE/signing-key.jks
+      if: inputs.keystore_b64
+      
+    - name: Copy the key file to the signing key file
+      run: cp ${{ inputs.keystore_file }} $GITHUB_WORKSPACE/signing-key.jks
       shell: bash
+      if: inputs.keystore_file && !inputs.keystore_b64
 
     - run: chmod +x ./gradlew
       shell: bash
