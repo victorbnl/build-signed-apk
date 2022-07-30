@@ -51,21 +51,15 @@ runs:
       shell: bash
       if: inputs.keystore_file && !inputs.keystore_b64
 
-    - run: cd ${{ inputs.gradlew_dir }}
-      shell: bash
-
-    - run: chmod +x ./gradlew
-      shell: bash
-
-    - run: ./gradlew build
-      shell: bash
-
-    - run: ./gradlew assembleRelease
-        -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/signing-key.jks 
-        -Pandroid.injected.signing.store.password=${{ inputs.keystore_password }} 
-        -Pandroid.injected.signing.key.alias=${{ inputs.key_alias }} 
-        -Pandroid.injected.signing.key.password=${{ inputs.key_password }}
-      shell: bash
+    - shell: bash
+      working-directory: ${{ inputs.gradlew_dir }}
+      run: |
+        ./gradlew build
+        ./gradlew assembleRelease
+          -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/signing-key.jks 
+          -Pandroid.injected.signing.store.password=${{ inputs.keystore_password }} 
+          -Pandroid.injected.signing.key.alias=${{ inputs.key_alias }} 
+          -Pandroid.injected.signing.key.password=${{ inputs.key_password }}
 
     - run: rm $GITHUB_WORKSPACE/signing-key.jks
       shell: bash
