@@ -52,6 +52,7 @@ runs:
       if: inputs.keystore_file && !inputs.keystore_b64
 
     - run: cd ${{ inputs.gradlew_dir }}
+      shell: bash
 
     - run: chmod +x ./gradlew
       shell: bash
