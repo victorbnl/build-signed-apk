@@ -26,6 +26,11 @@ inputs:
   key_password:
     description: "Key password"
     required: true
+  
+  gradlew_dir:
+    description: "Directory of the gradlew file"
+    required: false
+    default: "."
     
 runs:
   using: "composite"
@@ -45,6 +50,8 @@ runs:
       run: cp ${{ inputs.keystore_file }} $GITHUB_WORKSPACE/signing-key.jks
       shell: bash
       if: inputs.keystore_file && !inputs.keystore_b64
+
+    - run: cd ${{ inputs.gradlew_dir }}
 
     - run: chmod +x ./gradlew
       shell: bash
