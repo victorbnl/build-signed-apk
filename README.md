@@ -22,7 +22,7 @@ If both `keystore_b64` and `keystore_file` are defined, only `keystore_b64` will
 - name: Build Signed APK
   uses: victorbnl/build-signed-apk@main
   with:
-    keystore: ${{ secrets.keystore }}
+    keystore_b64: ${{ secrets.keystore }}
     keystore_password: ${{ secrets.keystore_password }}
     key_alias: ${{ secrets.key_alias }}
     key_password: ${{ secrets.key_password }}
