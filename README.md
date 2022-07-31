@@ -13,6 +13,7 @@ The following inputs are all required
 - `keystore_password`: the password of the file
 - `key_alias`: the alias of the key
 - `key_password`: the password of the key
+- `gradlew_dir`: directory of the gradlew file
 
 If both `keystore_b64` and `keystore_file` are defined, only `keystore_b64` will be used. At least one of them must be defined.
 
