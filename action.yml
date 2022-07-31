@@ -54,6 +54,7 @@ runs:
     - shell: bash
       working-directory: ${{ inputs.gradlew_dir }}
       run: |
+        chmod +x ./gradlew
         ./gradlew build
         ./gradlew assembleRelease
           -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/signing-key.jks 
