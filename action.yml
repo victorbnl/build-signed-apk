@@ -56,10 +56,10 @@ runs:
       run: |
         chmod +x ./gradlew
         ./gradlew build
-        ./gradlew assembleRelease
-          -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/signing-key.jks 
-          -Pandroid.injected.signing.store.password=${{ inputs.keystore_password }} 
-          -Pandroid.injected.signing.key.alias=${{ inputs.key_alias }} 
+        ./gradlew assembleRelease \
+          -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/signing-key.jks \
+          -Pandroid.injected.signing.store.password=${{ inputs.keystore_password }} \
+          -Pandroid.injected.signing.key.alias=${{ inputs.key_alias }} \
           -Pandroid.injected.signing.key.password=${{ inputs.key_password }}
 
     - run: rm $GITHUB_WORKSPACE/signing-key.jks
