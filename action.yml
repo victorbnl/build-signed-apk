@@ -58,8 +58,8 @@ runs:
       run: |
         export JAVA_HOME=/usr/lib/jvm/temurin-${{ inputs.java_version }}-jdk-amd64
         chmod +x ./gradlew
-        ./gradlew build
-        ./gradlew assembleRelease \
+        ./gradlew build --no-daemon
+        ./gradlew assembleRelease --no-daemon \
           -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/signing-key.jks \
           -Pandroid.injected.signing.store.password=${{ inputs.keystore_password }} \
           -Pandroid.injected.signing.key.alias=${{ inputs.key_alias }} \
