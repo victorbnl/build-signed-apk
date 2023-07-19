@@ -32,14 +32,16 @@ inputs:
     required: false
     default: "."
 
+  java_version:
+    description: "Java version to build the project with"
+    required: false
+    default: '11'
+
 runs:
   using: "composite"
   steps:
 
     - run: sudo apt-get -y update
-      shell: bash
-
-    - run: sudo apt-get -y install openjdk-11-jdk
       shell: bash
 
     - shell: bash
@@ -54,6 +56,7 @@ runs:
     - shell: bash
       working-directory: ${{ inputs.gradlew_dir }}
       run: |
+        export JAVA_HOME=/usr/lib/jvm/temurin-${{ inputs.java_version }}-jdk-amd64
         chmod +x ./gradlew
         ./gradlew build
         ./gradlew assembleRelease \
