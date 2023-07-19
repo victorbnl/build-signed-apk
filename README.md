@@ -41,6 +41,6 @@ Build a signed APK of your Android application
 
 ## Get your APK
 
-The APK is built at the default location, that is: `app/build/outputs/apk/release/app-release.apk`.
+Your APK file is built at the default location, that is: `app/build/outputs/apk/release/app-release.apk`.
 
 Now you can do what you want with the APK file, like creating a release or uploading it as an artifact.
