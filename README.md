@@ -2,24 +2,30 @@
 
 Build a signed APK of your Android application
 
-**WARNING:** This uses `apt-get` to install Java, as I didn't find better ways to install it, and, consequently, will work ONLY on Ubuntu
+> **Warning**  
+> This action only works on Ubuntu
 
 ## Inputs
 
-**Required**
+### Either required
 
-- `keystore_b64` (optional, in alternative to `keystore_file`): the _contents of_ the keystore file (.jks), encoded as base64. (_I highly recommend you to generate this with the linux `base64` command, it did not work for me using websites to convert it._)
-- `keystore_file` (optional, in alternative to `keystore`): the path to the keystore file (.jks). There's no need to encode it as base64.
-- `keystore_password`: the password of the file
-- `key_alias`: the alias of the key
-- `key_password`: the password of the key
+- `keystore_b64`: The _contents of_ the keystore file (.jks), encoded as base64. You can generate it on Linux by running `base64 keystore.jks`.
 
-**Optional**
+- `keystore_file`: The path to the keystore file (.jks). Using it is a security issue as it requires to have your keystore file in your repository. Instead please use `keystore_b64`, which allows you to have your keystore as a GitHub secret.
 
-- `gradlew_dir`: directory of the gradlew file (default: `.`)
-- `java_version`: java version to use (can be `8`, `11` or `17`, default: `11`)
+### Required
 
-If both `keystore_b64` and `keystore_file` are defined, only `keystore_b64` will be used. At least one of them must be defined.
+- `keystore_password`: Your keystore’s password.
+
+- `key_alias`: Your key’s alias.
+
+- `key_password`: Your key’s password.
+
+### Optionnal
+
+- `gradlew_dir`: Gradlew file directory (default: `.`).
+
+- `java_version`: Java version to use (can be `8`, `11` or `17`; default: `11`).
 
 ## Example
 
@@ -35,4 +41,6 @@ If both `keystore_b64` and `keystore_file` are defined, only `keystore_b64` will
 
 ## Get your APK
 
-The APK is built at the default location, which is: `app/build/outputs/apk/release/app-release.apk`. Feel free to do whatever you want with this apk now, like creating a release with it or putting it as an artifact of the release
+The APK is built at the default location, that is: `app/build/outputs/apk/release/app-release.apk`.
+
+Now you can do what you want with the APK file, like creating a release or uploading it as an artifact.
