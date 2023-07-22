@@ -44,15 +44,18 @@ runs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
 
-    - if: inputs.keystore_b64
+    - name: Write keystore file from content
+      if: inputs.keystore_b64
       shell: bash
       run: echo "${{ inputs.keystore_b64 }}" | base64 -d > $GITHUB_WORKSPACE/signing-key.jks
 
-    - if: inputs.keystore_file && !inputs.keystore_b64
+    - name: Copy keystore file to right location
+      if: inputs.keystore_file && !inputs.keystore_b64
       shell: bash
       run: cp ${{ inputs.keystore_file }} $GITHUB_WORKSPACE/signing-key.jks
 
-    - shell: bash
+    - name: Build APK
+      shell: bash
       working-directory: ${{ inputs.gradlew_dir }}
       run: |
         export JAVA_HOME=/usr/lib/jvm/temurin-${{ inputs.java_version }}-jdk-amd64
