@@ -44,6 +44,9 @@ runs:
     - shell: bash
       run: sudo apt-get -y update
 
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+
     - if: inputs.keystore_b64
       shell: bash
       run: echo "${{ inputs.keystore_b64 }}" | base64 -d > $GITHUB_WORKSPACE/signing-key.jks
