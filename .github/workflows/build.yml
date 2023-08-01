@@ -11,7 +11,7 @@ jobs:
 
       - uses: actions/checkout@v2
 
-      - uses: victorbnl/build-signed-apk@test
+      - uses: victorbnl/build-signed-apk@dev
         with:
           keystore_b64: ${{ secrets.keystore_b64 }}
           keystore_password: ${{ secrets.keystore_password }}
