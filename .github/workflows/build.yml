@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  - push
+  - workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - uses: victorbnl/build-signed-apk@test
+        with:
+          keystore_b64: ${{ secrets.keystore_b64 }}
+          keystore_password: ${{ secrets.keystore_password }}
+          key_alias: ${{ secrets.key_alias }}
+          key_password: ${{ secrets.key_password }}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: apk
+          path: app/build/outputs/apk/release/app-release.apk
