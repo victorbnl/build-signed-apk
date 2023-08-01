@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+    namespace "com.victorbnl.test"
     compileSdk 32
 
     defaultConfig {
